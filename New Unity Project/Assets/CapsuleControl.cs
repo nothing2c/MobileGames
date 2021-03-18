@@ -54,6 +54,7 @@ public class CapsuleControl : MonoBehaviour, IControllable
                 {
                     closest = hit.distance;
                     dragPosition = hit.point;
+                    dragPosition += new Vector3(0, 1, 0);
                 }
             }
         }
