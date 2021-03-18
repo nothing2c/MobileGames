@@ -39,8 +39,8 @@ public class TouchManagerScript : MonoBehaviour
 
     void Awake()
     {
-        touch = TouchType.None;
         selectedObject = null;
+        touch = TouchType.None;
 
         tapTimeThreshold = 0.5f;
         tapTimeStart = 0;
@@ -49,9 +49,9 @@ public class TouchManagerScript : MonoBehaviour
 
         initialDistance = 0;
         initialScale = Vector3.one;
-        determineScaleZoomTotal = 0;
 
         currentZoom = 0;
+        determineScaleZoomTotal = 0;
 
         initialRotation = Quaternion.identity;
         initialAngel = 0;
@@ -68,6 +68,10 @@ public class TouchManagerScript : MonoBehaviour
         {
             Debug.Log("gyro");
         }
+        else
+        {
+            Debug.Log("no gyro");
+        }
     }
 
     void Update()
@@ -79,6 +83,7 @@ public class TouchManagerScript : MonoBehaviour
         {
             if (selectedObject != null && accelEnabled)
             {
+                // Accelerometer translate is asuming phone is parallel to the floor
                 selectedObject.gameObject.transform.Translate(new Vector3(-Input.acceleration.y, 0, Input.acceleration.x) * SPEED);
             }
         }
