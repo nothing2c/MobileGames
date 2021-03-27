@@ -3,6 +3,7 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - GoogleAdManager
     - UnityAdManager
+    - UnityBannerAds
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
     GoogleMobileAds.dll:
@@ -64,6 +65,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 14118}
     - Class: 114
       Script: {instanceID: 14564}
+    - Class: 114
+      Script: {instanceID: 14992}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -575,7 +578,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: PlayableTrack
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: UnityBannerAds
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Ryan/Desktop/Mobile_Games/Add Thyme/trest.apk
+  playerPath: C:/Users/Ryan/Desktop/MobileGames/Add Thyme/test.apk

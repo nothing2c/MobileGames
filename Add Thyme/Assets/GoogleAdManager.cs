@@ -15,8 +15,10 @@ public class GoogleAdManager : MonoBehaviour
         MobileAds.Initialize(initStatus => { });
 
         RequestBanner();
+
         RequestInterstitial();
-        //interstitial.Show();
+        StartCoroutine(ShowInterstitial());
+
         RequestReward();
     }
 
@@ -56,15 +58,24 @@ public class GoogleAdManager : MonoBehaviour
         reward.LoadAd(request);
     }
 
+    IEnumerator ShowInterstitial()
+    {
+        while (!interstitial.IsLoaded())
+            yield return null;
+
+        interstitial.Show();
+    }
+
     public void ShowReward()
     {
-        if (reward.IsLoaded())
-        {
-            reward.Show();
-        }
-        else
-        {
-            Debug.Log("reward.ready");
-        }
+        StartCoroutine(ShowRewardCo());
+    }
+
+    IEnumerator ShowRewardCo()
+    {
+        while (!reward.IsLoaded())
+            yield return null;
+
+        reward.Show();
     }
 }
