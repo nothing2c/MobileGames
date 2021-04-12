@@ -36,6 +36,7 @@ public class Coin : MonoBehaviour
             result = "Tails";
     }
 
+    // Called by event at the end of flip annimation
     public void ShowResult()
     {
         manager.ShowResult(result);

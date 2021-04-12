@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
 
@@ -12,6 +11,8 @@ public class GoogleAdManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("im actually working");
+
         MobileAds.Initialize(initStatus => { });
 
         RequestBanner();
