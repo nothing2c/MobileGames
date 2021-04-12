@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using GoogleMobileAds.Api;
 
@@ -12,11 +11,15 @@ public class GoogleAdManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("im actually working");
+
         MobileAds.Initialize(initStatus => { });
 
         RequestBanner();
+
         RequestInterstitial();
-        //interstitial.Show();
+        StartCoroutine(ShowInterstitial());
+
         RequestReward();
     }
 
@@ -56,15 +59,24 @@ public class GoogleAdManager : MonoBehaviour
         reward.LoadAd(request);
     }
 
+    IEnumerator ShowInterstitial()
+    {
+        while (!interstitial.IsLoaded())
+            yield return null;
+
+        interstitial.Show();
+    }
+
     public void ShowReward()
     {
-        if (reward.IsLoaded())
-        {
-            reward.Show();
-        }
-        else
-        {
-            Debug.Log("reward.ready");
-        }
+        StartCoroutine(ShowRewardCo());
+    }
+
+    IEnumerator ShowRewardCo()
+    {
+        while (!reward.IsLoaded())
+            yield return null;
+
+        reward.Show();
     }
 }
