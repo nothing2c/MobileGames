@@ -5,22 +5,27 @@ using UnityEngine.Advertisements;
 
 public class UnityAdManager : MonoBehaviour, IUnityAdsListener
 {
-    string gameId = "4045765";
-    string bannerId = "Banner_Android";
-    string intertsitialId = "Interstitial_Android";
-    string rewardId = "Rewarded_Android";
+    private GameManager manager;
+
+    const string gameId = "4045765";
+    const string bannerId = "Banner_Android";
+    const string interstitialId = "Interstitial_Android";
+    const string rewardId = "Rewarded_Android";
     bool testMode = true;
 
     void Start()
     {
+        manager = FindObjectOfType<GameManager>();
+
+        Advertisement.AddListener(this);
         Advertisement.Initialize(gameId, testMode);
 
-        StartCoroutine(ShowBanner());
-        StartCoroutine(ShowIntertsitial());
+        //StartCoroutine(ShowBanner());
+        //StartCoroutine(ShowInterstitial());
         //StartCoroutine(ShowReward());
     }
 
-    IEnumerator ShowBanner()
+    public IEnumerator ShowBanner()
     {
         while (!Advertisement.IsReady(bannerId))
             yield return null;
@@ -29,15 +34,15 @@ public class UnityAdManager : MonoBehaviour, IUnityAdsListener
         Advertisement.Banner.Show(bannerId);
     }
 
-    IEnumerator ShowIntertsitial()
+    public IEnumerator ShowInterstitial()
     {
-        while (!Advertisement.IsReady(intertsitialId))
+        while (!Advertisement.IsReady(interstitialId))
             yield return null;
 
-        Advertisement.Show(intertsitialId);
+        Advertisement.Show(interstitialId);
     }
 
-    IEnumerator ShowReward()
+    public IEnumerator ShowReward()
     {
         while (!Advertisement.IsReady(rewardId))
             yield return null;
@@ -47,7 +52,23 @@ public class UnityAdManager : MonoBehaviour, IUnityAdsListener
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
-        throw new System.NotImplementedException();
+        Debug.Log(placementId + ", " + showResult);
+
+        switch(placementId)
+        {
+            case interstitialId:
+                manager.ShowPanel("Main");
+                manager.UpdateTries(3);
+                break;
+
+            case rewardId:
+                Debug.Log(placementId + ", " + showResult);
+                manager.UpdateTries(0);
+                break;
+
+            default:
+                break;
+        }
     }
 
     public void OnUnityAdsDidError(string message)
