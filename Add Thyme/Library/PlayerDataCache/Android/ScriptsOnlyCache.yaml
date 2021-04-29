@@ -1,12 +1,18 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - AddthymeAuthentication
     - Coin
+    - GPGSAchievements
+    - GPGSLeaderboards
     - GameManager
     - GoogleAdManager
+    - Score
     - UnityAdManager
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
+    GoogleMobileAds.dll:
+    - GoogleMobileAds.Common.MobileAdsEventExecutor
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     UnityEditor.Graphs.dll:
@@ -19,6 +25,9 @@ ScriptsOnlyBuild:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
     - UnityEditor.TestTools.TestRunner.TestRun.TestJobDataHolder
+    UnityEngine.Advertisements.dll:
+    - UnityEngine.Advertisements.Placeholder
+    - UnityEngine.Advertisements.Platform.Editor.BannerPlaceholder
     UnityEngine.UI.dll:
     - UnityEngine.EventSystems.EventSystem
     - UnityEngine.EventSystems.StandaloneInputModule
@@ -47,8 +56,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
@@ -64,29 +71,37 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 1606}
+      Script: {instanceID: 1632}
     - Class: 114
-      Script: {instanceID: 1672}
+      Script: {instanceID: 1698}
     - Class: 114
-      Script: {instanceID: 1740}
+      Script: {instanceID: 1770}
     - Class: 114
-      Script: {instanceID: 1766}
+      Script: {instanceID: 1798}
     - Class: 114
-      Script: {instanceID: 2120}
+      Script: {instanceID: 2182}
     - Class: 114
-      Script: {instanceID: 2418}
+      Script: {instanceID: 2472}
     - Class: 114
-      Script: {instanceID: 2522}
+      Script: {instanceID: 2498}
     - Class: 114
-      Script: {instanceID: 2610}
+      Script: {instanceID: 2606}
     - Class: 114
-      Script: {instanceID: 2670}
+      Script: {instanceID: 2702}
     - Class: 114
-      Script: {instanceID: 2844}
+      Script: {instanceID: 2768}
     - Class: 114
-      Script: {instanceID: 2930}
+      Script: {instanceID: 2958}
     - Class: 114
-      Script: {instanceID: 3780}
+      Script: {instanceID: 3050}
+    - Class: 114
+      Script: {instanceID: 3742}
+    - Class: 114
+      Script: {instanceID: 3958}
+    - Class: 114
+      Script: {instanceID: 3984}
+    - Class: 114
+      Script: {instanceID: 4544}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -134,7 +149,7 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
-      Hash: 408defa19b270aea07e2e7225c12f8d5
+      Hash: 1df1d9df74999263c5086a89a1b01b69
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -194,6 +209,12 @@ ScriptsOnlyBuild:
     className: TMP_FontAsset
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: GooglePlayGames.OurUtils
+    className: NearbyHelperObject
+  - hash:
+      serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
@@ -228,6 +249,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: EnumerableTestState
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GPGSLeaderboards
   - hash:
       serializedVersion: 2
       Hash: a325152ad9563ed900af221c132fea36
@@ -506,10 +533,22 @@ ScriptsOnlyBuild:
     className: SignalTrack
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: AddthymeAuthentication
+  - hash:
+      serializedVersion: 2
       Hash: aba7b2852ef61d175dd9602e7723d5e5
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
     className: Mask
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: GooglePlayGames.OurUtils
+    className: PlayGamesHelperObject
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb
@@ -548,7 +587,7 @@ ScriptsOnlyBuild:
     className: ControlPlayableAsset
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: a7ea0b94b8393861f6cab54093ee5ca5
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: Coin
@@ -564,6 +603,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
     className: TMP_Settings
+  - hash:
+      serializedVersion: 2
+      Hash: a011e7022eb9a6743d470933abbf268a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Score
   - hash:
       serializedVersion: 2
       Hash: 6980e81ddc615a861309d2d659cc3760
@@ -608,6 +653,12 @@ ScriptsOnlyBuild:
     className: ActivationPlayableAsset
   - hash:
       serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GPGSAchievements
+  - hash:
+      serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d
     assemblyName: UnityEngine.UI.dll
     namespaceName: UnityEngine.UI
@@ -621,4 +672,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: C:/Users/Ryan/Desktop/MobileGames/Add Thyme/test.apk
+  playerPath: C:/Users/Ryan/Desktop/MobileGames/Add Thyme/Builds/ATDemo.aab

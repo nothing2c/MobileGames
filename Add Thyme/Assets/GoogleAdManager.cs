@@ -1,9 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 using GoogleMobileAds.Api;
+using System;
 
 public class GoogleAdManager : MonoBehaviour
 {
+    private GameManager manager;
+
     private BannerView banner;
     private InterstitialAd interstitial;
     private RewardedAd reward;
@@ -11,16 +14,16 @@ public class GoogleAdManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Debug.Log("im actually working");
+        manager = GetComponent<GameManager>();
 
         MobileAds.Initialize(initStatus => { });
 
-        RequestBanner();
-
+        //RequestBanner();
         RequestInterstitial();
-        StartCoroutine(ShowInterstitial());
-
         RequestReward();
+
+        //StartCoroutine(ShowInterstitial());
+        //StartCoroutine(ShowReward());
     }
 
     // Update is called once per frame
@@ -29,7 +32,7 @@ public class GoogleAdManager : MonoBehaviour
 
     }
 
-    private void RequestBanner()
+    public void RequestBanner()
     {
         string testID = "ca-app-pub-3940256099942544/6300978111";
 
@@ -37,6 +40,7 @@ public class GoogleAdManager : MonoBehaviour
 
         AdRequest request = new AdRequest.Builder().Build();
         banner.LoadAd(request);
+        //banner.Hide();
     }
 
     private void RequestInterstitial()
@@ -47,6 +51,8 @@ public class GoogleAdManager : MonoBehaviour
 
         AdRequest request = new AdRequest.Builder().Build();
         interstitial.LoadAd(request);
+
+        interstitial.OnAdClosed += OnInterstialClosed;
     }
 
     private void RequestReward()
@@ -57,9 +63,10 @@ public class GoogleAdManager : MonoBehaviour
 
         AdRequest request = new AdRequest.Builder().Build();
         reward.LoadAd(request);
+        reward.OnUserEarnedReward += OnRewardWatced;
     }
 
-    IEnumerator ShowInterstitial()
+    public IEnumerator ShowInterstitial()
     {
         while (!interstitial.IsLoaded())
             yield return null;
@@ -67,16 +74,24 @@ public class GoogleAdManager : MonoBehaviour
         interstitial.Show();
     }
 
-    public void ShowReward()
-    {
-        StartCoroutine(ShowRewardCo());
-    }
-
-    IEnumerator ShowRewardCo()
+    public IEnumerator ShowReward()
     {
         while (!reward.IsLoaded())
             yield return null;
 
         reward.Show();
+    }
+
+    private void OnInterstialClosed(object sender, EventArgs args)
+    {
+        manager.ShowPanel("Main");
+        manager.UpdateTries(3);
+        RequestInterstitial();
+    }
+
+    private void OnRewardWatced(object sender, EventArgs args)
+    {
+        manager.UpdateTries(0);
+        RequestReward();
     }
 }
