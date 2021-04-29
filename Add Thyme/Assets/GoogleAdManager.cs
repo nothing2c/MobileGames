@@ -14,11 +14,11 @@ public class GoogleAdManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        manager = FindObjectOfType<GameManager>();
+        manager = GetComponent<GameManager>();
 
         MobileAds.Initialize(initStatus => { });
 
-        RequestBanner();
+        //RequestBanner();
         RequestInterstitial();
         RequestReward();
 
@@ -32,7 +32,7 @@ public class GoogleAdManager : MonoBehaviour
 
     }
 
-    private void RequestBanner()
+    public void RequestBanner()
     {
         string testID = "ca-app-pub-3940256099942544/6300978111";
 
@@ -40,7 +40,7 @@ public class GoogleAdManager : MonoBehaviour
 
         AdRequest request = new AdRequest.Builder().Build();
         banner.LoadAd(request);
-        banner.Hide();
+        //banner.Hide();
     }
 
     private void RequestInterstitial()
@@ -80,11 +80,6 @@ public class GoogleAdManager : MonoBehaviour
             yield return null;
 
         reward.Show();
-    }
-
-    public void ShowBanner()
-    {
-        banner.Show();
     }
 
     private void OnInterstialClosed(object sender, EventArgs args)

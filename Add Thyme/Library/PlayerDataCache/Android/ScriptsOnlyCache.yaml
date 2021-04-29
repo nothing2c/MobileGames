@@ -3,8 +3,11 @@ ScriptsOnlyBuild:
     Assembly-CSharp.dll:
     - AddthymeAuthentication
     - Coin
+    - GPGSAchievements
+    - GPGSLeaderboards
     - GameManager
     - GoogleAdManager
+    - Score
     - UnityAdManager
     GoogleMobileAds.Editor.dll:
     - GoogleMobileAds.Editor.GoogleMobileAdsSettings
@@ -53,8 +56,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 48
       Script: {instanceID: 0}
-    - Class: 64
-      Script: {instanceID: 0}
     - Class: 74
       Script: {instanceID: 0}
     - Class: 81
@@ -80,21 +81,27 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2182}
     - Class: 114
-      Script: {instanceID: 2496}
+      Script: {instanceID: 2472}
     - Class: 114
-      Script: {instanceID: 2604}
+      Script: {instanceID: 2498}
     - Class: 114
-      Script: {instanceID: 2700}
+      Script: {instanceID: 2606}
     - Class: 114
-      Script: {instanceID: 2766}
+      Script: {instanceID: 2702}
     - Class: 114
-      Script: {instanceID: 2956}
+      Script: {instanceID: 2768}
     - Class: 114
-      Script: {instanceID: 3048}
+      Script: {instanceID: 2958}
     - Class: 114
-      Script: {instanceID: 3740}
+      Script: {instanceID: 3050}
     - Class: 114
-      Script: {instanceID: 3956}
+      Script: {instanceID: 3742}
+    - Class: 114
+      Script: {instanceID: 3958}
+    - Class: 114
+      Script: {instanceID: 3984}
+    - Class: 114
+      Script: {instanceID: 4544}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -142,7 +149,7 @@ ScriptsOnlyBuild:
     className: TMP_InputField
   - hash:
       serializedVersion: 2
-      Hash: 58c709fa26507272086d8cf261e6a539
+      Hash: 1df1d9df74999263c5086a89a1b01b69
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: GameManager
@@ -242,6 +249,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.TestRunner.dll
     namespaceName: UnityEngine.TestTools
     className: EnumerableTestState
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GPGSLeaderboards
   - hash:
       serializedVersion: 2
       Hash: a325152ad9563ed900af221c132fea36
@@ -592,6 +605,12 @@ ScriptsOnlyBuild:
     className: TMP_Settings
   - hash:
       serializedVersion: 2
+      Hash: a011e7022eb9a6743d470933abbf268a
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: Score
+  - hash:
+      serializedVersion: 2
       Hash: 6980e81ddc615a861309d2d659cc3760
     assemblyName: Unity.TextMeshPro.dll
     namespaceName: TMPro
@@ -632,6 +651,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ActivationPlayableAsset
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GPGSAchievements
   - hash:
       serializedVersion: 2
       Hash: 7ab0e790220bdca831fdd886b339039d

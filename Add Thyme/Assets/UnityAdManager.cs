@@ -15,7 +15,7 @@ public class UnityAdManager : MonoBehaviour, IUnityAdsListener
 
     void Start()
     {
-        manager = FindObjectOfType<GameManager>();
+        manager = GetComponent<GameManager>();
 
         Advertisement.AddListener(this);
         Advertisement.Initialize(gameId, testMode);

@@ -47,16 +47,16 @@ static Il2CppMethodPointer s_methodPointers[10] =
 };
 static const int32_t s_InvokerIndices[10] = 
 {
-	2034,
-	1826,
-	1808,
-	1091,
-	1091,
-	1228,
-	1228,
-	1228,
-	1228,
-	2034,
+	1990,
+	1786,
+	1768,
+	1083,
+	1083,
+	1219,
+	1219,
+	1219,
+	1219,
+	1990,
 };
 extern const CustomAttributesCacheGenerator g_UnityEngine_UnityWebRequestTextureModule_AttributeGenerators[];
 IL2CPP_EXTERN_C const Il2CppCodeGenModule g_UnityEngine_UnityWebRequestTextureModule_CodeGenModule;

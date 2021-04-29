@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public Canvas gui;
     public GameObject MainOptionsPanel;
     public GameObject ChoicePanel;
+    public GameObject GPGSPanel;
     public Text ResultText;
 
     public Text TriesText;
@@ -22,7 +23,21 @@ public class GameManager : MonoBehaviour
     private UnityAdManager unityAds;
     private int tries;
     private bool unlimitedTriesActive;
+
+    private GPGSAchievements achievements;
+    private GPGSLeaderboards leaderboard;
+    private Score combo;
     // Start is called before the first frame update
+    private void Awake()
+    {
+        googleAds = GetComponent<GoogleAdManager>();
+        unityAds = GetComponent<UnityAdManager>();
+
+        achievements = GetComponent<GPGSAchievements>();
+        leaderboard = GetComponent<GPGSLeaderboards>();
+
+        combo = GetComponent<Score>();
+    }
     void Start()
     {
         coin = FindCoin();
@@ -34,17 +49,22 @@ public class GameManager : MonoBehaviour
         Panels = new List<GameObject>();
         Panels.Add(MainOptionsPanel);
         Panels.Add(ChoicePanel);
+        Panels.Add(GPGSPanel);
+        
 
-        googleAds = GetComponent<GoogleAdManager>();
-        unityAds = GetComponent<UnityAdManager>();
+        int adSource = DetermineAdSource();
+
+        if (adSource == 0)
+        {
+            googleAds.RequestBanner();
+        }
+        else
+        {
+            StartCoroutine(unityAds.ShowBanner());
+        }
+
         UpdateTries(3);
         unlimitedTriesActive = false;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     private Coin FindCoin()
@@ -64,6 +84,10 @@ public class GameManager : MonoBehaviour
 
             case "Choice":
                 currentPanel = ChoicePanel;
+                break;
+
+            case "GPGS":
+                currentPanel = GPGSPanel;
                 break;
 
             default:
@@ -91,9 +115,27 @@ public class GameManager : MonoBehaviour
     public void ShowResult(string result)
     {
         if (result != choice)
+        {
+            achievements.UnlockRegular(GPGSIds.achievement_unlucky);
+            if(combo.GetScore() > 0)
+            {
+                leaderboard.UpdateLeaderboardScore();
+                combo.ResetScore();
+            }
+            else
+            {
+                combo.ResetScore();
+            }
             ResultText.text = result + "\nWrong";
+        }
+
         else
+        {
+            achievements.UnlockRegular(GPGSIds.achievement_good_start);
+            achievements.UpdateIncremental();
+            combo.IncrementScore();
             ResultText.text = result + "\nRight";
+        }
 
         if (!unlimitedTriesActive)
         {
@@ -146,6 +188,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void OnAchievementsClick()
+    {
+        achievements.OpenAchievementPanel();
+        ShowPanel("Main");
+    }
+
+    public void OnLeaderboardClick()
+    {
+        leaderboard.OpenLeaderboard();
+        ShowPanel("Main");
+    }
+
     // 0 for unity, 1 for google
     private int DetermineAdSource()
     {
@@ -169,7 +223,7 @@ public class GameManager : MonoBehaviour
 
     private IEnumerator UnlimitedTriesTimer()
     {
-        float duration = 3f;
+        float duration = 120f;
         float timeRemaining = duration;
 
         while (timeRemaining > 0)
